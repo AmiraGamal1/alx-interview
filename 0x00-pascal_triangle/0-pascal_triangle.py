@@ -2,6 +2,8 @@
 """
 Pascal triangle
 """
+
+
 def pascal_triangle(n):
     """Generate Pascal's Triangle up to the nth row."""
     if n <= 0:
