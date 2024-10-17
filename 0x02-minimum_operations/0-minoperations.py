@@ -9,16 +9,19 @@ def minOperations(n):
     '''
     if not isinstance(n, int):
         return 0
-    if n == 1:
-        return 0
-    if n == 2:
-        return 2
-    if n == 4:
-        return 4
-    if n % 2 == 0:
-        if n % 4 == 0:
-            return (n // 4 + 4 )
-        else:
-            return (n // 2 + 2)
-    else:
-        return 0
+    ops_count = 0
+    clipboard = 0
+    done = 1
+    while done < n:
+        if clipboard == 0:
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif n - done > 0 and (n - done) % done == 0:
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif clipboard > 0:
+            done += clipboard
+            ops_count += 1
+    return ops_count
