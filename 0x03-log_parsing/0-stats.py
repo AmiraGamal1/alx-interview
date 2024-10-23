@@ -71,7 +71,7 @@ if __name__ == "__main__":
                     size += int(file_size)
             except (IndexError, ValueError):
                 pass
-    except (KeyboardInterrupt):
+    except (KeyboardInterrupt, EOFError):
         pass
     finally:
         print_metrics(size, status_codes)
