@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Reads from standard input and computes metrics"""
 import re
-import sys
 
 
 def extract_input(line):
