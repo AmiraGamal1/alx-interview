@@ -72,6 +72,5 @@ if __name__ == "__main__":
             except (IndexError, ValueError):
                 pass
     except (KeyboardInterrupt, EOFError):
-        pass
-    finally:
         print_metrics(size, status_codes)
+        raise
