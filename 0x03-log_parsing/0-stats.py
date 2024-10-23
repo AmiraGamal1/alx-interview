@@ -20,13 +20,14 @@ def extract_input(line):
         'file_size': 0,
     }
     fmt = '{}\\-{}{}{}{}\\s*'.format(regex[0], regex[1], regex[2], regex[3], regex[4])
-    match = re.match(fmt, line)
+    match = re.fullmatch(fmt, line)
     if match is not None:
         status_code = match.group('status_code')
         file_size = int(match.group('file_size'))
         info['status_code'] = status_code
         info['file_size'] = file_size
     return info
+
 
 def print_metrics(size, status_codes):
     """print metrics
@@ -38,6 +39,7 @@ def print_metrics(size, status_codes):
     print("File size: {}".format(size))
     for key in sorted(status_codes.keys()):
         print("{}: {}".format(key, status_codes[key]))
+
 
 if __name__ == "__main__":
     import sys
