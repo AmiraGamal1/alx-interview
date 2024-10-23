@@ -19,12 +19,12 @@ def extract_input(line):
     )
 
     info = {
-        'status_code': 0,
+        'status_code': '0',
         'file_size': 0,
     }
 
-    fmt = '{}-{}{}{}{}'.format(regex[0], regex[1],
-                               regex[2], regex[3], regex[4])
+    fmt = '{}\\-{}{}{}{}\\s*'.format(regex[0], regex[1],
+                                     regex[2], regex[3], regex[4])
     match = re.fullmatch(fmt, line)
     if match is not None:
         status_code = match.group('status_code')
@@ -71,6 +71,7 @@ if __name__ == "__main__":
                     size += int(file_size)
             except (IndexError, ValueError):
                 pass
-        print_metrics(size, status_codes)
     except (KeyboardInterrupt):
         pass
+    finally:
+        print_metrics(size, status_codes)
